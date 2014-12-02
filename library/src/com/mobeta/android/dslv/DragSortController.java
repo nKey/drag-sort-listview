@@ -382,14 +382,15 @@ public class DragSortController extends SimpleFloatViewManager implements View.O
     @Override
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
-        final int x1 = (int) e1.getX();
-        final int y1 = (int) e1.getY();
-        final int x2 = (int) e2.getX();
-        final int y2 = (int) e2.getY();
-        final int deltaX = x2 - mItemX;
-        final int deltaY = y2 - mItemY;
-
         if (mCanDrag && !mDragging && (mHitPos != MISS || mFlingHitPos != MISS)) {
+
+            final int x1 = (int) e1.getX();
+            final int y1 = (int) e1.getY();
+            final int x2 = (int) e2.getX();
+            final int y2 = (int) e2.getY();
+            final int deltaX = x2 - mItemX;
+            final int deltaY = y2 - mItemY;
+
             if (mHitPos != MISS) {
                 if (mDragInitMode == ON_DRAG && Math.abs(y2 - y1) > mTouchSlop && mSortEnabled) {
                     startDrag(mHitPos, deltaX, deltaY);
